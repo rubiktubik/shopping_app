@@ -1,4 +1,6 @@
-﻿namespace ShoppingApp.ViewModels
+﻿using ShoppingApp.ViewModels;
+
+namespace ShoppingApp.Store
 {
     public class StoreViewModel : BaseViewModel
     {

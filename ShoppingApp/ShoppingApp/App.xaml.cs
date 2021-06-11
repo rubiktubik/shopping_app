@@ -1,19 +1,18 @@
-﻿using ShoppingApp.Services;
-using ShoppingApp.Views;
-using System;
+﻿using ReduxSimple;
+using ShoppingApp.State;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using static ShoppingApp.State.Reducers;
 
 namespace ShoppingApp
 {
     public partial class App : Application
     {
-
+        public static readonly ReduxStore<RootState> Store = new ReduxStore<RootState>(CreateReducers(),enableTimeTravel: false);
         public App()
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            //DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 
