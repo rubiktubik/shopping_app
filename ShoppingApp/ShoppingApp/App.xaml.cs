@@ -1,4 +1,5 @@
 ﻿using ReduxSimple;
+using ShoppingApp.Order.Presentation;
 using ShoppingApp.State;
 using Xamarin.Forms;
 using static ShoppingApp.State.Reducers;
@@ -7,12 +8,12 @@ namespace ShoppingApp
 {
     public partial class App : Application
     {
-        public static readonly ReduxStore<RootState> Store = new ReduxStore<RootState>(CreateReducers(),enableTimeTravel: false);
+        public static readonly ReduxStore<RootState> Store = new ReduxStore<RootState>(CreateReducers(),RootState.InitialState,enableTimeTravel: false);
         public App()
         {
             InitializeComponent();
 
-            //DependencyService.Register<MockDataStore>();
+            DependencyService.Register<OrderViewModel>();
             MainPage = new AppShell();
         }
 

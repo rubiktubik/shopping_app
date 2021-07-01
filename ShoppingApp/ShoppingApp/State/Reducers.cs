@@ -1,6 +1,7 @@
 ﻿using ReduxSimple;
-using System;
 using System.Collections.Generic;
+
+using static ReduxSimple.Reducers;
 
 namespace ShoppingApp.State
 {
@@ -8,7 +9,7 @@ namespace ShoppingApp.State
     {
         public static IEnumerable<On<RootState>> CreateReducers()
         {
-            throw new NotImplementedException();
+            return CombineReducers(Order.State.Reducers.GetReducers());
         }
     }
 }

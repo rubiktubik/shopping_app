@@ -1,12 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:presentation="clr-namespace:ShoppingApp.Order.Presentation" 
+             xmlns:domain="clr-namespace:ShoppingApp.Order.Domain"
+             x:DataType="presentation:OrderViewModel"
+             Title="{x:Binding Title,Mode=OneWay}"
+             Disappearing="ContentPage_Disappearing"
              x:Class="ShoppingApp.Order.Presentation.OrderPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid RowDefinitions="1*,9*" Margin="20,20,20,20">
+            <Grid Grid.Row="0" ColumnDefinitions="8*,2*">
+                <Grid RowDefinitions="*,*" Grid.Column="0">
+                    <SearchBar Grid.Row="0" HeightRequest="35"/>
+                    <StackLayout Orientation="Horizontal" Grid.Row="1">
+                        <RadioButton Content="All" IsChecked="True"></RadioButton>
+                        <RadioButton Content="Shopping cart"></RadioButton>
+                    </StackLayout>
+                </Grid>
+                <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
+                    <Label VerticalOptions="Center" FontSize="Medium" Margin="0,0,10,0">22.3 €</Label>
+                    <Button Text="ShoppingCart"></Button>
+                </StackLayout>
+            </Grid>
+            <CollectionView Grid.Row="1" ItemsSource="{x:Binding CartItems,Mode=OneWay}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="domain:ShoppingCartItem">
+                        <Grid ColumnDefinitions="8*,2*">
+                            <Label Grid.Column="0" Text="{x:Binding Product.Description,Mode=OneWay}"></Label>
+                            <Label Grid.Column="1" Text="{x:Binding Product.Price,Mode=OneWay}"></Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

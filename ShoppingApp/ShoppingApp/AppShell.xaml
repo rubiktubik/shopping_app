@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="clr-namespace:ShoppingApp.Views"
+       xmlns:local="clr-namespace:ShoppingApp.Order.Presentation"
        Title="ShoppingApp"
        x:Class="ShoppingApp.AppShell">
 
@@ -30,7 +30,7 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Store" Icon="icon_about.png" Route="StorePage" ContentTemplate="{DataTemplate local:StorePage}" />
+        <ShellContent Title="Store" Icon="icon_about.png" Route="StorePage" ContentTemplate="{DataTemplate local:OrderPage}" />
     </TabBar>
 
 

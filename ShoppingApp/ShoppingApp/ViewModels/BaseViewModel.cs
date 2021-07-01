@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Reactive.Disposables;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace ShoppingApp.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged,IDisposable
     {
 
         bool isBusy = false;
@@ -17,6 +18,7 @@ namespace ShoppingApp.ViewModels
         }
 
         string title = string.Empty;
+
         public string Title
         {
             get { return title; }
@@ -46,6 +48,33 @@ namespace ShoppingApp.ViewModels
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
+
+        #region IDisposable
+
+        protected CompositeDisposable Disposables { get; private set; } = new CompositeDisposable();
+
+        private bool disposedValue;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    Disposables?.Dispose();
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
         #endregion
     }
 }

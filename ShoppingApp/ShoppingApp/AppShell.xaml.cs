@@ -11,7 +11,6 @@ namespace ShoppingApp
         public AppShell()
         {
             InitializeComponent();
-            //Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
         }
 
     }

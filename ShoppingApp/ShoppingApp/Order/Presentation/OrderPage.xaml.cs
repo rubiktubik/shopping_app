@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +10,16 @@ namespace ShoppingApp.Order.Presentation
         public OrderPage()
         {
             InitializeComponent();
+            var viewModel = DependencyService.Resolve<OrderViewModel>();
+            BindingContext = viewModel;
+        }
+
+        private void ContentPage_Disappearing(object sender, System.EventArgs e)
+        {
+            if (BindingContext is OrderViewModel viewModel)
+            {
+                viewModel.Dispose();
+            }
         }
     }
 }
