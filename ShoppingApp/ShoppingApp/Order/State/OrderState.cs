@@ -1,9 +1,13 @@
-﻿namespace ShoppingApp.Order.State
+﻿using System.Collections.Immutable;
+
+namespace ShoppingApp.Order.State
 {
     public record OrderState
     {
         public decimal Sum { get; set; }
         public ShoppingCartItemEntityState ShoppingCartItems { get; set; }
+
+        public ImmutableList<string> Names { get; set; } 
 
         public bool IsLoading { get; set; }
 
@@ -11,7 +15,8 @@
         {
             ShoppingCartItems = new ShoppingCartItemEntityState(),
             Sum = 0m,
-            IsLoading = false
+            IsLoading = false,
+            Names = ImmutableList<string>.Empty
         };
     }
 }

@@ -21,5 +21,13 @@ namespace ShoppingApp.Order.Presentation
                 viewModel.Dispose();
             }
         }
+
+        private void ShoppingCartButton_Clicked(object sender, System.EventArgs e)
+        {
+            if (BindingContext is OrderViewModel viewModel)
+            {
+                viewModel.GetNamesCommand();
+            }
+        }
     }
 }

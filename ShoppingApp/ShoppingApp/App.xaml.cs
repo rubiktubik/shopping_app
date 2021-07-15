@@ -1,4 +1,5 @@
 ﻿using ReduxSimple;
+using ShoppingApp.History.Presentation;
 using ShoppingApp.Order.Presentation;
 using ShoppingApp.State;
 using Xamarin.Forms;
@@ -14,6 +15,7 @@ namespace ShoppingApp
             InitializeComponent();
 
             DependencyService.Register<OrderViewModel>();
+            DependencyService.Register<HistoryViewModel>();
             MainPage = new AppShell();
         }
 

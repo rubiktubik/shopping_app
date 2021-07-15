@@ -19,7 +19,7 @@
                 </Grid>
                 <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
                     <Label VerticalOptions="Center" FontSize="Medium" Margin="0,0,10,0">22.3 €</Label>
-                    <Button Text="ShoppingCart"></Button>
+                    <Button x:Name="ShoppingCartButton" Clicked="ShoppingCartButton_Clicked" Text="ShoppingCart"></Button>
                 </StackLayout>
             </Grid>
             <CollectionView Grid.Row="1" ItemsSource="{x:Binding CartItems,Mode=OneWay}">
